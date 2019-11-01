@@ -7,8 +7,9 @@ from pytube import YouTube
 # URL для отладки
 # https://www.youtube.com/watch?v=pGQGVJdDO7U
 
-# пп вызывается в процессе загрузки и печатает процент загруженного
-def progress_function(stream, chunk, file_handle, bytes_remaining):
+
+def progress_function(bytes_remaining):
+	''' пп вызывается в процессе загрузки и печатает процент загруженного '''
 	p = round((1-bytes_remaining/video.filesize)*100, 3)
 	ostatok = p % 5
 	if ostatok == 0:
@@ -23,4 +24,3 @@ for st in yt.streams.filter(progressive=True, file_extension='mp4').all():
 video = yt.streams.filter(progressive=True, file_extension='mp4').first()
 print('Размер файла = ', video.filesize//1000000, ' Mb')
 video.download('c:/temp')
-
