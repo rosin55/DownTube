@@ -10,10 +10,11 @@ from pytube import YouTube
 
 def progress_function(selth, chunk, file_handler, bytes_remaining):
 	''' пп вызывается в процессе загрузки и печатает процент загруженного '''
-	p = round((1-bytes_remaining/video.filesize)*100, 3)
-	ostatok = p % 5
-	if ostatok == 0:
-		print(p, '% получено')
+	p = round((1-bytes_remaining/video.filesize)*100, 4)
+#	print ('осталось байт {:10.0f}'.format(bytes_remaining))
+	ostatok = p % 10
+	if ostatok < 0.01:
+		print('\rосталось {:.2%}'.format(bytes_remaining/video.filesize))
 
 
 video_link = input('1. Задайте URL скачиваемого видео ')
