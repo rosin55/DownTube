@@ -8,16 +8,15 @@ from pytube import YouTube
 # https://www.youtube.com/watch?v=pGQGVJdDO7U
 
 
-def progress_function(bytes_remaining):
+def progress_function(selth, chunk, file_handler, bytes_remaining):
 	''' пп вызывается в процессе загрузки и печатает процент загруженного '''
 	p = round((1-bytes_remaining/video.filesize)*100, 3)
-	print(bytes_remaining, ' осталось')
 	ostatok = p % 5
 	if ostatok == 0:
 		print(p, '% получено')
 
 
-video_link = input('Задайте URL скачиваемого видео ')
+video_link = input('1. Задайте URL скачиваемого видео ')
 yt = YouTube(url=video_link, on_progress_callback=progress_function)
 print('Имя файла = ', yt.title)
 for st in yt.streams.filter(progressive=True, file_extension='mp4').all():
