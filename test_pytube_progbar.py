@@ -5,6 +5,7 @@
 # с коррекцией  return self.player_config_args['title'] в pytube\__main__.py
 
 from pytube import YouTube
+from clint.textui import progress
 # URL для отладки
 # https://www.youtube.com/watch?v=pGQGVJdDO7U
 
@@ -12,10 +13,12 @@ from pytube import YouTube
 def progress_function(selth, chunk, file_handler, bytes_remaining):
 	''' пп вызывается в процессе загрузки и печатает процент загруженного '''
 	p = round((1-bytes_remaining/video.filesize)*100, 4)
+	progress.dots(p)
 #	print ('осталось байт {:10.0f}'.format(bytes_remaining))
 	ostatok = p % 10
 	if ostatok < 0.01:
-		print('\rосталось {:.0%}'.format(bytes_remaining/video.filesize))
+		progress.bar(bytes_remaining/video.filesize)
+		print('осталось {:.0%}'.format(bytes_remaining/video.filesize))
 
 
 video_link = input('1. Задайте URL скачиваемого видео ')
