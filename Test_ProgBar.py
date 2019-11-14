@@ -4,13 +4,13 @@
 import progressbar
 import time
 
-# вывод прогрессбара с кастомным отображением
+# вывод прогрессбара с кастомным отображением '-' меняется на '|'
 pbar = progressbar.ProgressBar(
 	widgets=[progressbar.Bar(fill='-', marker='|'), progressbar.Percentage(), ' ', progressbar.SimpleProgress()])
 
 for i in pbar(range(50)):
 	time.sleep(0.1)
-
+# заполнение точками по пустой строке справа налево
 pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(fill=' ', marker='.', fill_left=False)]).start()
 for i in range(100):
 	time.sleep(0.1)
