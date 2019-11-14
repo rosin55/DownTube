@@ -9,7 +9,7 @@ pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(fill='-', marker = '|'),
 for i in pbar(range(50)):
 	time.sleep(0.1)
 
-pbar = progressbar.ProgressBar().start()
+pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(fill=' ', marker = '.', fill_left=False)]).start()
 for i in range(100):
 	time.sleep(0.1)
 	pbar.update(i+1)
