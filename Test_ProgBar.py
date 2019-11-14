@@ -1,6 +1,17 @@
+# Демо прогрессбара. Запускать в системной консоли
+# ( не IDE )
+
 import progressbar
 import time
+# вывод прогрессбара с кастомным отображением
+pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(fill='-', marker = '|'), progressbar.Percentage(), ' ', progressbar.SimpleProgress()])
 
-pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(), progressbar.Percentage(), ' ', progressbar.ETA()])
 for i in pbar(range(50)):
-	time.sleep(0.5)
+	time.sleep(0.1)
+
+pbar = progressbar.ProgressBar().start()
+for i in range(100):
+	time.sleep(0.1)
+	pbar.update(i+1)
+
+pbar.finish()
