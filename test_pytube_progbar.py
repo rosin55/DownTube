@@ -13,7 +13,7 @@ from pytube import YouTube
 
 
 def progress_function(selth, chunk, file_handler, bytes_remaining):
-	''' пп вызывается в процессе загрузки и печатает процент загруженного '''
+	""" пп вызывается в процессе загрузки и печатает процент загруженного """
 	p = round((1-bytes_remaining/video.filesize)*100, 4)
 	ostatok = p % 10
 	if ostatok < 0.01:
