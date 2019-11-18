@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # в win консоли выдать chcp utf-8
 # Скрипт для скачивания роликов с Ютуба
-# с отображением процента загрузки в одной строке
+# с отображением процента загрузки через модуль progressbar
 # 18.11.2019
 # использует pytube Version: 9.5.2
 # с коррекцией  return self.player_config_args['title'] в pytube\__main__.py
@@ -17,7 +17,7 @@ def progress_function(selth, chunk, file_handler, bytes_remaining):
 	p = round((1-bytes_remaining/video.filesize)*100, 4)
 	ostatok = p % 1
 	if ostatok < 0.01:
-#        Отображение текущего значения прогрессбара
+#       Отображение текущего значения прогрессбара
 		pbar.update(p)
 
 
@@ -32,3 +32,4 @@ print('Размер файла = ', video.filesize//1000000, ' Mb')
 #     Задание параметров прогрессбара
 pbar = progressbar.ProgressBar(widgets=[progressbar.Bar(fill='-', marker='+', fill_left=True)]).start()
 video.download('c:/temp')
+
