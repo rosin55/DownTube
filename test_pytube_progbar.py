@@ -5,7 +5,7 @@
 # 18.11.2019
 # использует pytube Version: 9.5.2
 # с коррекцией  return self.player_config_args['title'] в pytube\__main__.py
-import sys
+
 from pytube import YouTube
 import progressbar
 
